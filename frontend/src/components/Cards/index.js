@@ -19,23 +19,24 @@ export default class Cards extends React.Component {
 	render() {
 		return (
 			<div>
+				{/* JSON.stringify(this.state.cards) */}
 				<div className="tinder">
 					<div className="tinder--status">
 						<i className="fa fa-remove"></i>
-						<i className="fa fa-heart"></i>
+						<i className="fa fa-check"></i>
 					</div>
 
 					<div className="tinder--cards">
 						{
-							this.state.cards.map(res =>
-								<Card name={res.name} location={res.location} time={res.time} link="https://placeimg.com/600/300/animals" />
+							this.state.cards.map((res, i) =>
+								<Card name={res.name} location={res.location} time={res.time} link={res.link} key={i} />
 							)
 						}
 					</div>
 
 					<div className="tinder--buttons">
 						<button id="nope"><i className="fa fa-remove"></i></button>
-						<button id="love"><i className="fa fa-heart"></i></button>
+						<button id="love"><i className="fa fa-check"></i></button>
 					</div>
 				</div>
 			</div>

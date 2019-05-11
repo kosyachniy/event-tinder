@@ -88,7 +88,7 @@ export function getCard(that, data={}) {
 
                 let card = cards[0];
 
-                card.classNameList.add('removed');
+                card.classList.add('removed');
 
                 if (love) {
                     card.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';

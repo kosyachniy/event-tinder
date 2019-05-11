@@ -11,8 +11,8 @@ export default class Card extends React.Component {
             <div className="tinder--card">
                 <img src={this.props.link}/>
                 <h3>{this.props.name}</h3>
-                <p>{this.props.location}</p>
-                <p>{this.props.time}</p>
+                <div>{Math.floor(Math.random()*100)} км</div>
+                <div>{this.props.time}</div>
             </div>
         )
     }

@@ -81,7 +81,7 @@ body {
   margin-left: -50px;
 }
 
-.tinder_love .fa-heart {
+.tinder_love .fa-check {
   opacity: 0.7;
   transform: scale(1);
 }
@@ -103,9 +103,9 @@ body {
 
 .tinder--card {
   display: inline-block;
-  width: 90vw;
+  width: 98vw;
   max-width: 400px;
-  height: 70vh;
+  height: 76vh;
   background: #FFFFFF;
   padding-bottom: 40px;
   border-radius: 8px;
@@ -132,14 +132,14 @@ body {
 
 .tinder--card h3 {
   margin-top: 32px;
-  font-size: 32px;
+  font-size: 16px;
   padding: 0 16px;
   pointer-events: none;
 }
 
-.tinder--card p {
+.tinder--card p, .tinder--card div {
   margin-top: 24px;
-  font-size: 20px;
+  font-size: 10px;
   padding: 0 16px;
   pointer-events: none;
 }
@@ -152,8 +152,8 @@ body {
 
 .tinder--buttons button {
   border-radius: 50%;
-  line-height: 60px;
-  width: 60px;
+  line-height: 50px;
+  width: 50px;
   border: 0;
   background: #FFFFFF;
   display: inline-block;
@@ -169,10 +169,10 @@ body {
   vertical-align: middle;
 }
 
-.fa-heart {
-  color: #FFACE4;
+.fa-check {
+  color: #00BB3F;
 }
 
 .fa-remove {
-  color: #CDD6DD;
+  color: #100873;
 }
