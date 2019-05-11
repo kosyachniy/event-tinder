@@ -1,14 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 
-class App extends React.Component {
+import './style.css'
+import { getCard } from '../../func/methods'
+
+export default class Cards extends React.Component {
+	state = {
+		cards: [],
+	}
 
     componentDidMount() {
+        getCard(this)
 
-        'use strict';
+        // 'use strict';
 
-        console.log(document)
+        // console.log(document)
 
         let tinderContainer = document.querySelector('.tinder');
         let allCards = document.querySelectorAll('.tinder--card');
@@ -111,51 +116,52 @@ class App extends React.Component {
         nope.addEventListener('click', nopeListener);
         love.addEventListener('click', loveListener);
 
-    }
+	}
 
-    render() {
-        return (
-            <div class="tinder">
-              <div class="tinder--status">
-                <i class="fa fa-remove"></i>
-                <i class="fa fa-heart"></i>
-              </div>
+	render() {
+		return (
+			<div>
+				{ JSON.stringify(this.state.cards) }
+				<div class="tinder">
+					<div class="tinder--status">
+						<i class="fa fa-remove"></i>
+						<i class="fa fa-heart"></i>
+					</div>
 
-              <div class="tinder--cards">
-                <div class="tinder--card">
-                  <img src="https://placeimg.com/600/300/people"/>
-                  <h3>Demo card 1</h3>
-                  <p>This is a demo for Tinder like swipe cards</p>
-                </div>
-                <div class="tinder--card">
-                  <img src="https://placeimg.com/600/300/animals"/>
-                  <h3>Demo card 2</h3>
-                  <p>This is a demo for Tinder like swipe cards</p>
-                </div>
-                <div class="tinder--card">
-                  <img src="https://placeimg.com/600/300/nature"/>
-                  <h3>Demo card 3</h3>
-                  <p>This is a demo for Tinder like swipe cards</p>
-                </div>
-                <div class="tinder--card">
-                  <img src="https://placeimg.com/600/300/tech"/>
-                  <h3>Demo card 4</h3>
-                  <p>This is a demo for Tinder like swipe cards</p>
-                </div>
-                <div class="tinder--card">
-                  <img src="https://placeimg.com/600/300/arch"/>
-                  <h3>Demo card 5</h3>
-                  <p>This is a demo for Tinder like swipe cards</p>
-                </div>
-              </div>
+					<div class="tinder--cards">
+						<div class="tinder--card">
+						<img src="https://placeimg.com/600/300/people"/>
+						<h3>Demo card 1</h3>
+						<p>This is a demo for Tinder like swipe cards</p>
+						</div>
+						<div class="tinder--card">
+						<img src="https://placeimg.com/600/300/animals"/>
+						<h3>Demo card 2</h3>
+						<p>This is a demo for Tinder like swipe cards</p>
+						</div>
+						<div class="tinder--card">
+						<img src="https://placeimg.com/600/300/nature"/>
+						<h3>Demo card 3</h3>
+						<p>This is a demo for Tinder like swipe cards</p>
+						</div>
+						<div class="tinder--card">
+						<img src="https://placeimg.com/600/300/tech"/>
+						<h3>Demo card 4</h3>
+						<p>This is a demo for Tinder like swipe cards</p>
+						</div>
+						<div class="tinder--card">
+						<img src="https://placeimg.com/600/300/arch"/>
+						<h3>Demo card 5</h3>
+						<p>This is a demo for Tinder like swipe cards</p>
+						</div>
+					</div>
 
-              <div class="tinder--buttons">
-                <button id="nope"><i class="fa fa-remove"></i></button>
-                <button id="love"><i class="fa fa-heart"></i></button>
-              </div>
-            </div>
-        );
-    }
+					<div class="tinder--buttons">
+						<button id="nope"><i class="fa fa-remove"></i></button>
+						<button id="love"><i class="fa fa-heart"></i></button>
+					</div>
+				</div>
+			</div>
+		)
+	}
 }
-
-export default App;
