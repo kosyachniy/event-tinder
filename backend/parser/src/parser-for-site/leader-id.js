@@ -122,7 +122,7 @@ async function main() {
 
   console.log('Начинаю парсить html')
   let event = parseHtml(response.body, url)
-  // console.log(`Result event: ${JSON.stringify(event)}`)
+  console.log(`Result event: ${JSON.stringify(event)}`)
   if (event) {
     eventDb.create(event)
   }
@@ -132,7 +132,8 @@ if (!fs.existsSync('../images')) {
   fs.mkdirSync('../images')
 }
 
-eventDb.dropCollection()
+drop = false
+if (drop) eventDb.dropCollection()
 
 main()
 
