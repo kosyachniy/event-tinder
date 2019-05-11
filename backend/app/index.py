@@ -1,7 +1,7 @@
 from flask import request, make_response, current_app, jsonify
 from app import app
 
-# from mongodb import db
+from mongodb import db
 
 
 # Междоменные запросы
@@ -65,18 +65,42 @@ def crossdomain(origin=None, methods=None, headers=None, max_age=21600,
 def get():
 	x = request.json
 
-	events = [{
-		'name': 'Регистрация на SocialHack',
-		'location': 12.3,
-		'time': 13464315,
-	}, {
-		'name': 'Придумывание названия',
-		'location': 5.6,
-		'time': 134643465,
-	}, {
-		'name': 'Забирание диплома',
-		'location': 131.0,
-		'time': 13464319,
-	}]
+	db_condition = {
+		'id': x['id'] if 'id' in x else None,
+	}
+
+	db_filter = {
+		'_id': False,
+		'__v': False,
+		'createdAt': False,
+	}
+
+	months = (
+			  'января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля',
+			  'августа', 'сентября', 'октября', 'ноября', 'декабря'
+	)
+
+	def transform(el):
+		return {
+			'name': el['title'],
+			'location': el['address'],
+			'time': '{} {}'.format(el['date']['day'], months[int(el['date']['month'])])
+		}
+
+	events = list(map(transform, db['events'].find(db_condition, db_filter)))
+
+	# events = [{
+	# 	'name': 'Регистрация на SocialHack',
+	# 	'location': 12.3,
+	# 	'time': 13464315,
+	# }, {
+	# 	'name': 'Придумывание названия',
+	# 	'location': 5.6,
+	# 	'time': 134643465,
+	# }, {
+	# 	'name': 'Забирание диплома',
+	# 	'location': 131.0,
+	# 	'time': 13464319,
+	# }]
 
 	return jsonify({'events': events})

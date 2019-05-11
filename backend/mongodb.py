@@ -1,2 +1,2 @@
 from pymongo import MongoClient
-db = MongoClient()['bls']
+db = MongoClient()['eventTinder']
