@@ -94,7 +94,7 @@ body {
 .tinder--cards {
   flex-grow: 1;
   padding-top: 40px;
-  text-align: center;
+  text-align: left;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -132,12 +132,12 @@ body {
 
 .tinder--card h3 {
   margin-top: 32px;
-  font-size: 16px;
+  font-size: 25px;
   padding: 0 16px;
   pointer-events: none;
 }
 
-.tinder--card p, .tinder--card div {
+.tinder--card p, .tinder--card > div {
   margin-top: 24px;
   font-size: 10px;
   padding: 0 16px;
@@ -175,4 +175,8 @@ body {
 
 .fa-remove {
   color: #100873;
+}
+
+.fa {
+    cursor: pointer;
 }

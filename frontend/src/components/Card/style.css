@@ -1,0 +1,14 @@
+.fa-map-marker-alt, .fa-calendar-week {
+  color: #100873;
+
+    opacity: 0.7;
+    transform: scale(1);
+}
+
+.inline {
+    display: inline-block;
+}
+
+.inline:first-child {
+    
+}
