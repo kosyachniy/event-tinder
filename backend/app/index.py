@@ -93,6 +93,17 @@ def get():
 			'link': el['img']['web'],
 		}
 
-	events = list(map(transform, db['events'].find(db_condition, db_filter)[:15]))
+	# events = list(map(transform, db['events'].find(db_condition, db_filter)[:15]))
+
+	events = []
+	names = set()
+
+	for event in db['events'].find(db_condition, db_filter):
+		if event['title'] not in names and len(event['title']) < 100:
+			names.add(event['title'])
+			events.append(transform(event))
+
+			if len(events) == 15:
+				break
 
 	return jsonify({'events': events})
