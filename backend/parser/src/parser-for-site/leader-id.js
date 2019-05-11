@@ -3,6 +3,8 @@ let cheerio = require('cheerio')
 let request = require('request')
 let fs = require('fs')
 
+let parseText = require('./keyWordsFromText')
+
 let eventDb = require('../controllers/db/event')
 
 let IMG_PATH = '../images/'
@@ -29,7 +31,7 @@ function parseDate(dateString) {
   let dateArray = dateString.split(' ')
 
   date.day = dateArray[0]
-  date.month = STR_TO_MONTH[dateArray[1]]
+  date.month = STR_TO_MONTH[dateArray[1]] || 5
   date.year = dateArray[2]
 
   return date
@@ -56,14 +58,15 @@ function parseTime(timeString) {
 
 function parseHtml(html, url) {
   let $ = cheerio.load(html)
-  let event = {}
+  let event = {
+    sourceUrl: url.trim()
+  }
   let $title = $('.article__intro')
   let $img = $('.article__media-picture')
-  let $description = $('article__content > p')
+  let $description = $('.article__content > p')
   let $date = $('p:contains("Дата")')
   let $time = $('p:contains("Время")')
   let $address = $('p:contains("Адрес")')
-  console.log($title.length)
 
   if ($title.length) {
     event.title = $title.text().trim()
@@ -86,6 +89,8 @@ function parseHtml(html, url) {
 
   if ($description.length) {
     event.description = $description.text().trim()
+
+    event.tags = parseText(event.description)
   }
 
   if ($date.length) {
@@ -116,15 +121,17 @@ function parseHtml(html, url) {
 }
 
 async function main() {
-  let i = 21131
-  let url = EVENTS_URL + i + '/'
-  let response = await needle('get', url)
+  for (let i = 21000; i <= 21131; i++) {
+    let url = EVENTS_URL + i + '/'
+    let response = await needle('get', url)
 
-  console.log('Начинаю парсить html')
-  let event = parseHtml(response.body, url)
-  console.log(`Result event: ${JSON.stringify(event)}`)
-  if (event) {
-    eventDb.create(event)
+    console.log('Начинаю парсить html')
+    let event = parseHtml(response.body, url)
+    if (event && event.description) {
+      eventDb.create(event)
+    } else {
+      console.log('No description, bad event')
+    }
   }
 }
 
@@ -132,7 +139,7 @@ if (!fs.existsSync('../images')) {
   fs.mkdirSync('../images')
 }
 
-drop = false
+drop = true
 if (drop) eventDb.dropCollection()
 
 main()
