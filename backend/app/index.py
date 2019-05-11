@@ -81,26 +81,18 @@ def get():
 	)
 
 	def transform(el):
+		try:
+			month = months[int(el['date']['month'])]
+		except:
+			month = 0
+
 		return {
 			'name': el['title'],
 			'location': el['address'],
-			'time': '{} {}'.format(el['date']['day'], months[int(el['date']['month'])])
+			'time': '{} {}'.format(el['date']['day'], month),
+			'link': el['img']['web'],
 		}
 
-	events = list(map(transform, db['events'].find(db_condition, db_filter)))
-
-	# events = [{
-	# 	'name': 'Регистрация на SocialHack',
-	# 	'location': 12.3,
-	# 	'time': 13464315,
-	# }, {
-	# 	'name': 'Придумывание названия',
-	# 	'location': 5.6,
-	# 	'time': 134643465,
-	# }, {
-	# 	'name': 'Забирание диплома',
-	# 	'location': 131.0,
-	# 	'time': 13464319,
-	# }]
+	events = list(map(transform, db['events'].find(db_condition, db_filter)[:15]))
 
 	return jsonify({'events': events})
