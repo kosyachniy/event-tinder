@@ -75,7 +75,10 @@ export function getCard(that, data={}) {
 
                     event.target.style.transform = 'translate(' + toX + 'px, ' + (toY + event.deltaY) + 'px) rotate(' + rotate + 'deg)';
                     initCards();
+
+					el.remove();
                 }
+
             });
         });
 

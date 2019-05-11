@@ -105,7 +105,7 @@ body {
   display: inline-block;
   width: 98vw;
   max-width: 400px;
-  height: 76vh;
+  height: 60vh;
   background: #FFFFFF;
   padding-bottom: 40px;
   border-radius: 8px;
@@ -126,28 +126,31 @@ body {
 }
 
 .tinder--card img {
-  max-width: 100%;
+  width: 100%;
   pointer-events: none;
+  min-height: 35%;
+  max-height: 55%;
 }
 
 .tinder--card h3 {
   margin-top: 32px;
+  margin-bottom: 16px;
   font-size: 25px;
   padding: 0 16px;
   pointer-events: none;
 }
 
 .tinder--card p, .tinder--card > div {
-  margin-top: 24px;
-  font-size: 10px;
-  padding: 0 16px;
+  margin-top: -5px;
+  font-size: 16px;
+  padding: 0 10px;
   pointer-events: none;
 }
 
 .tinder--buttons {
   flex: 0 0 100px;
   text-align: center;
-  padding-top: 20px;
+  padding-top: 30px;
 }
 
 .tinder--buttons button {
