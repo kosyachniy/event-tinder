@@ -1,0 +1,8 @@
+.main {
+	text-align: center;
+	z-index: 50;
+	margin: 0;
+	padding: 0;
+	/* background-color: #FFD7BF; */
+	background: rgba(255, 215, 191, 0.7);
+}

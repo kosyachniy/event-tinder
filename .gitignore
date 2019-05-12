@@ -16,7 +16,7 @@ dist/
 
 flask/
 keys.py
-keys.json
+keys.js
 
 # Logs
 logs

@@ -41,7 +41,7 @@
 }
 
 body {
-  background: #CCFBFE;
+  /* background: #CCFBFE; */
   overflow: hidden;
   font-family: sans-serif;
 }
@@ -173,11 +173,11 @@ body {
 }
 
 .fa-check {
-  color: #00BB3F;
+  color: #00d1b2; /* #00BB3F; */
 }
 
 .fa-remove {
-  color: #100873;
+  color: #ffd000; /* #100873; */
 }
 
 .fa {

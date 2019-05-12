@@ -99,7 +99,7 @@ def get():
 	names = set()
 
 	for event in db['events'].find(db_condition, db_filter):
-		if event['title'] not in names and len(event['title']) < 100:
+		if event['title'] not in names and len(event['title']) < 50:
 			names.add(event['title'])
 			events.append(transform(event))
 
