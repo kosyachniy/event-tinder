@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { getGeo } from '../func/methods'
+
 
 export default class Map extends React.Component {
 	constructor(props) {
@@ -23,11 +25,6 @@ export default class Map extends React.Component {
 	}
 
 	componentDidMount() {
-		function addMarkersToMap(map, lat, lng) {
-			let parisMarker = new window.H.map.Marker({lat, lng});
-			map.addObject(parisMarker);
-		}
-
 		this.platform = new window.H.service.Platform({
             app_id: this.props.app_id,
             app_code: this.props.app_code,
@@ -55,7 +52,10 @@ export default class Map extends React.Component {
 		// eslint-disable-next-line
 		let ui = new window.H.ui.UI.createDefault(this.map, layer)
 
-		addMarkersToMap(this.map, 50.086882, 14.4203952)
+		// addMarkersToMap(this.map, 50.086882, 14.4203952)
+
+		getGeo(this)
+		
 
 		// window.navigator.geolocation.getCurrentPosition(
 		// 	(position) => {

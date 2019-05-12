@@ -103,7 +103,7 @@ def get():
 			names.add(event['title'])
 			events.append(transform(event))
 
-			if len(events) == 15:
+			if 'count' in x and len(events) == x['count']:
 				break
 
 	return jsonify({'events': events})

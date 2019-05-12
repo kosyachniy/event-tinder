@@ -28,8 +28,8 @@ export default class App extends React.Component {
 	}
 
   render() {
-    const geoLat = 50.09504 // 50.08804
-    const geoLng = 14.43576 // 14.42076
+    const geoLat = 55
+    const geoLng = 40
 
 		const body = (this.state.maps &&
       <Map
@@ -37,7 +37,7 @@ export default class App extends React.Component {
         app_code={ appCode }
         lat={ geoLat }
         lng={ geoLng }
-        zoom={ 13 }
+        zoom={ 4 }
         // markerLat={ this.state.lat }
         // marletLng={ this.state.lng }
       />

@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 import api from './api'
 
 
@@ -5,7 +7,9 @@ import api from './api'
 
 export function getCard(that, data={}) {
 	const handlerSuccess = (other, res) => {
-		other.setState({cards: res['events']})
+        // console.log(res) // !
+
+        other.setState({cards: res['events']})
 
         let tinderContainer = document.querySelector('.tinder');
         let allCards = document.querySelectorAll('.tinder--card');
@@ -111,6 +115,35 @@ export function getCard(that, data={}) {
         nope.addEventListener('click', nopeListener);
         love.addEventListener('click', loveListener);
 
+	}
+
+	api(that, 'get', data, handlerSuccess)
+}
+
+export function getGeo(that, data={}) {
+	const handlerSuccess = (other, res) => {
+		function addMarkersToMap(map, lat, lng) {
+			let parisMarker = new window.H.map.Marker({lat, lng});
+			map.addObject(parisMarker);
+        }
+
+        function markered(geo) {
+            // console.log(geo)
+            addMarkersToMap(other.map, geo['Latitude'], geo['Longitude'])
+        }
+
+        res['events'].map(el => {
+            axios.get('https://geocoder.cit.api.here.com/6.2/geocode.json?searchtext=' + el['location'] + '&app_id=qa0WJfBASLFPiWJIm8zA&app_code=CSg50IevfYpGuIaHzNjj_Q&gen=8').then(elm => {
+                try {
+                    markered(JSON.parse(elm['request']['response'])['Response']['View'][0]['Result'][0]['Location']['DisplayPosition'])
+                } catch {
+                    
+                }
+               
+            })
+        })
+        
+        // 
 	}
 
 	api(that, 'get', data, handlerSuccess)

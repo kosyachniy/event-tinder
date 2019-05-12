@@ -13,7 +13,7 @@ export default class Cards extends React.Component {
 	// }
 
 	componentDidMount() {
-	    getCard(this)
+	    getCard(this, {'count': 15})
 	}
 
 	render() {
