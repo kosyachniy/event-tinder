@@ -100,6 +100,13 @@ def get():
 
 	for event in db['events'].find(db_condition, db_filter):
 		if event['title'] not in names and len(event['title']) < 50:
+			if 'search' in x and x['search']:
+				search = x['search'].lower()
+				text = (' ' + event['title'] + event['description']).lower()
+				print(search, text)
+				if not text.index(search):
+					continue
+
 			names.add(event['title'])
 			events.append(transform(event))
 

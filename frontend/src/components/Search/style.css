@@ -1,0 +1,9 @@
+.search {
+	position: fixed;
+	top: 84px;
+	left: 0;
+	background: rgba(255, 255, 255, 0.7);
+	width: 100%;
+	z-index: 99;
+	padding: 25px 0 25px 0;
+}

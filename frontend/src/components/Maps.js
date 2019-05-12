@@ -17,6 +17,8 @@ export default class Map extends React.Component {
 				lng: props.lng,
 			},
 			zoom: props.zoom,
+			search: props.search,
+			markers: props.markers,
 			// theme: props.theme,
 			// style: props.style,
 			lat: null,
@@ -54,7 +56,7 @@ export default class Map extends React.Component {
 
 		// addMarkersToMap(this.map, 50.086882, 14.4203952)
 
-		getGeo(this)
+		getGeo(this) // , {'search': this.props.search})
 		
 
 		// window.navigator.geolocation.getCurrentPosition(
@@ -74,10 +76,10 @@ export default class Map extends React.Component {
 	render() {
 		return (
 			<div id="here-map" style={ {
-				width: '100%',
-				height: '100%',
-				background: 'grey',
-			} } />
+							width: '100%',
+							height: '100%',
+							background: 'grey',
+						} } />
 		)
 	}
 }
