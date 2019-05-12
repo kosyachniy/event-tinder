@@ -123,6 +123,7 @@
 }
 
 .card {
+  margin-top: 102px;
   line-height: 1.5rem;
   font-weight: 300;
   box-sizing: border-box;

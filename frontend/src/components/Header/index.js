@@ -8,13 +8,14 @@ export default class Header extends React.Component {
 		return (
 			<div className="header">
 				<div className="trig">
-					Подборка
+					<font>Подборка</font>
 					<label className="switch">
 						<input type="checkbox" onChange={ this.props.handlerType } />
 						<span className="slider round"></span>
 					</label>
-					Карта
+					<font>Карта</font>
 				</div>
+				<div onClick={ this.props.handlerTime }><i class="fas fa-calendar-week"></i></div>
 			</div>
 		)
 	}

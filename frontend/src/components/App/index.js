@@ -8,6 +8,7 @@ import Header from '../Header'
 // import Search from '../Search'
 import Cards from '../Cards'
 import Map from '../Maps'
+import Timeline from '../Timeline'
 
 
 export default class App extends React.Component {
@@ -15,6 +16,7 @@ export default class App extends React.Component {
     maps: false,
     search: '',
     markers: '',
+    timeline: false,
   }
 
 	handlerType = () => {
@@ -35,11 +37,27 @@ export default class App extends React.Component {
     this.setState({search: res})
 
     // searchMarker = new H.map.DomMarker({lat:lat, lng:lon});
-	}
+  }
+  
+  handlerTime = () => {
+    this.setState({
+			timeline: !this.state.timeline,
+    })
+  
+		if (!this.state.timeline) {
+			document.getElementsByClassName('header')[0].style.background = 'rgba(255, 255, 255, 1)'
+		} else {
+      if (this.state.maps) {
+        document.getElementsByClassName('header')[0].style.background = 'rgba(255, 255, 255, 0.7)'
+      } else {
+        document.getElementsByClassName('header')[0].style.background = 'rgba(255, 255, 255, 0.0)'
+      }
+		}
+  }
 
 
   render() {
-		const body = (this.state.maps && 
+		const body = (this.state.timeline && <Timeline />) || (this.state.maps && 
       <React.Fragment>
         {/* <Search handlerSearch={this.handlerSearch} /> */}
         <Map
@@ -59,7 +77,7 @@ export default class App extends React.Component {
 		return (
 			<div className="main">
       {this.state.markers}
-				<Header handlerType={ this.handlerType } />
+				<Header handlerType={ this.handlerType } handlerTime={ this.handlerTime } />
 				{ body }
 			</div>
 		)
