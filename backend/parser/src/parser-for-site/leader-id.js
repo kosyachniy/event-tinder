@@ -73,17 +73,17 @@ function parseHtml(html, url) {
   }
 
   if ($img.length) {
-    let imgUrl = BASE_URL + $img.attr('src')
+    let imgUrl = $img.attr('src') // BASE_URL + 
     let imgUrlSanitized = imgUrl.replace(/[/:]/g, '_')
     let n = imgUrlSanitized.indexOf('?')
     imgUrlSanitized = imgUrlSanitized.substring(0, n != -1 ? n : s.length)
-    let imgServerPath = IMG_PATH + imgUrlSanitized
+    let imgServerPath = imgUrlSanitized // BASE_URL + 
 
     request(imgUrl).pipe(fs.createWriteStream(imgServerPath))
 
     event.img = {
       local: imgUrlSanitized,
-      web: BASE_URL + $img.attr('src')
+      web: $img.attr('src') // BASE_URL + 
     }
   }
 
