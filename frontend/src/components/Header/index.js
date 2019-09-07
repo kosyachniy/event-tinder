@@ -15,7 +15,7 @@ export default class Header extends React.Component {
 					</label>
 					<font>Карта</font>
 				</div>
-				<div onClick={ this.props.handlerTime }><i class="fas fa-calendar-week"></i></div>
+				<div onClick={ this.props.handlerTime }><i className="fas fa-calendar-week"></i></div>
 			</div>
 		)
 	}
